@@ -2,6 +2,7 @@ package pages;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ProductPage {
 
@@ -25,6 +27,8 @@ public class ProductPage {
     }
 
     public void pressAppleCheckBoxButton() {
+
+        driver.findElement(By.cssSelector(".accept-cookie-policy")).click();
         System.out.println("Pressing APPLE check box  button from the manufacturer menu");
         WebElement buttonApple = driver.findElement(By.xpath("//span[@class='analytics-skip'and text()='APPLE']//..//em"));
         if (!buttonApple.isSelected()) {
@@ -46,6 +50,7 @@ public class ProductPage {
 
 
     public void pressAppleIphone12ProMax128Gb() {
+
         System.out.println("Pressing Apple Iphone 12 pro max 128 GB  from the  menu");
         List<WebElement> allLinks = driver.findElements(LOC_MOBILE_PHONES_LIST);
 
@@ -55,6 +60,15 @@ public class ProductPage {
             }
         }
 
+    }
 
+
+    public void switchToWindow() {
+        String winHadleBefore = driver.getWindowHandle();
+        for (String windowId : driver.getWindowHandles()) {
+            driver.switchTo().window(windowId);
+
+
+        }
     }
 }

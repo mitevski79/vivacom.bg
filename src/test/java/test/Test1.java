@@ -15,7 +15,7 @@ public class Test1 extends BaseTest {
 
     @Test
     @DisplayName("Аdd a mobile phone to the cart")
-    public void addMobilePhoneToTheCart(){
+    public void addMobilePhoneToTheCart()  {
         homePage.navigateTo();
         homePage.pressDevicesDropdownButton();
         homePage.pressMobilePhonesLink();
@@ -23,9 +23,11 @@ public class Test1 extends BaseTest {
         productPage.pressAppleCheckBoxButton();
         productPage.pressGoldCheckBoxButton();
         productPage.pressAppleIphone12ProMax128Gb();
-       // Assertions.assertEquals(TEXT_MOBILE_PHONE_MODEL,devicePage.getMobilePhoneModel());
-       // Assertions.assertEquals(DEVICE_PAGE_TITLE,devicePage.getTitle());
-        devicePage.pressRadioButtonForOneTimePayment();
+        productPage.switchToWindow();
+        //Assertions.assertEquals(TEXT_MOBILE_PHONE_MODEL,devicePage.getMobilePhoneModel());
+        Assertions.assertEquals(DEVICE_PAGE_TITLE,devicePage.getTitle());
+
+        //devicePage.pressRadioButtonForOneTimePayment();
         //Assertions.assertEquals(DEVICE_PRISE,devicePage.getPriceOfTheDevice());
 
 

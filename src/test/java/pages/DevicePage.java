@@ -19,6 +19,8 @@ public class DevicePage {
 
 
     public String getTitle() {
+
+
         return driver.getTitle().trim();
     }
 
@@ -27,14 +29,17 @@ public class DevicePage {
     }
 
 
-    public void pressRadioButtonForOneTimePayment() {
-       driver.findElement(By.cssSelector("button[class='btn-close'][onclick='closeBannerSuggestToLogin()']")).click();
-       /* WebDriverWait wait = new WebDriverWait(driver,15);
+    public void pressRadioButtonForOneTimePayment()  {
+        //driver.switchTo().frame(driver.findElement(By.cssSelector("button[class='btn btn-success js-add-to-cart-btn js-prevent-dblclick']")));
+
+        //driver.findElement(By.cssSelector("button[class='btn-close'][onclick='closeBannerSuggestToLogin()'] em[class='vivacom-icon icon-close_x']")).click();
+       WebDriverWait wait = new WebDriverWait(driver,15);
         WebElement radioButton = wait.until(ExpectedConditions.
-                visibilityOfElementLocated(By.xpath("(//span[@class='simple-radio-btns-wrapper-span'])[2]")));
+                visibilityOfElementLocated(By
+                        .cssSelector("button[class='btn btn-success js-add-to-cart-btn js-prevent-dblclick']")));
         if(!radioButton.isSelected()){
             radioButton.click();
-        }*/
+        }
 
 
 
