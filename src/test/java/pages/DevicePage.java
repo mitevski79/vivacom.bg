@@ -18,8 +18,6 @@ public class DevicePage {
 
 
     public String getTitle() {
-
-
         return driver.getTitle().trim();
     }
 
@@ -44,5 +42,9 @@ public class DevicePage {
         return driver.findElement(By.id("summaryBarDevicePriceSpanId")).getText().trim();
     }
 
+    public void pressButtonShoppingCart() {
+        System.out.println("Pressing Shopping Cart button");
+        driver.findElement(By.cssSelector("button[class='btn btn-success js-add-to-cart-btn js-prevent-dblclick']")).click();
+    }
 }
 

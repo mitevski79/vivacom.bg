@@ -28,7 +28,6 @@ public class ProductPage {
 
     public void pressAppleCheckBoxButton() {
 
-        driver.findElement(By.cssSelector(".accept-cookie-policy")).click();
         System.out.println("Pressing APPLE check box  button from the manufacturer menu");
         WebElement buttonApple = driver.findElement(By.xpath("//span[@class='analytics-skip'and text()='APPLE']//..//em"));
         if (!buttonApple.isSelected()) {
@@ -50,18 +49,39 @@ public class ProductPage {
 
 
     public void pressAppleIphone12ProMax128Gb() {
-        String currentWindowId = driver.getWindowHandle();
+        //String currentWindowId = driver.getWindowHandle();
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebElement radioButton = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By
+                        .cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")));
+        radioButton.click();
+        driver.switchTo().frame("addToCardForm");
 
-        driver.findElement(By.cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")).click();
+        // driver.findElement(By.cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")).click();
 
-        Set<String> allWindows = driver.getWindowHandles();
+      /*  Set<String> allWindows = driver.getWindowHandles();
+        if (!allWindows.isEmpty()) {
+            for (String windowId : allWindows) {
+                driver.switchTo().window(windowId);
+                if (driver.getPageSource().trim().contains("Влезте в профила си, за да виждате офертите специално за вас")) {
+                    WebDriverWait wait = new WebDriverWait(driver, 15);
+                    WebElement radioButton = wait.until(ExpectedConditions.
+                            visibilityOfElementLocated(By
+                                    .xpath(" (//span[@class='simple-radio-btns-wrapper-span'])[2]")));
+                    if (!radioButton.isSelected()) {
+                        radioButton.click();
+                    }
+
+                }
+
+        /*Set<String> allWindows = driver.getWindowHandles();
         for (String windowId : allWindows){
             if (driver.switchTo().window(windowId).getTitle().trim().equals("Устройство | VIVACOM")) {
                 //Close the Visit Us Popup Window
                 //driver.close();
                 break;
             }
-        }
+        }*/
        /*
         System.out.println("Pressing Apple Iphone 12 pro max 128 GB  from the  menu");
         List<WebElement> allLinks = driver.findElements(LOC_MOBILE_PHONES_LIST);
@@ -71,18 +91,7 @@ public class ProductPage {
                 element.click();
             }
         }*/
-
-
-
     }
 
 
-    public void switchToWindow() {
-        String winHadleBefore = driver.getWindowHandle();
-        for (String windowId : driver.getWindowHandles()) {
-            driver.switchTo().window(windowId);
-
-
-        }
-    }
 }
