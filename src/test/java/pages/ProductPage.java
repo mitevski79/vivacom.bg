@@ -50,7 +50,7 @@ public class ProductPage {
 
 
     public void pressAppleIphone12ProMax128Gb() {
-
+        String winHadleBefore = driver.getWindowHandle();
         System.out.println("Pressing Apple Iphone 12 pro max 128 GB  from the  menu");
         List<WebElement> allLinks = driver.findElements(LOC_MOBILE_PHONES_LIST);
 
@@ -59,6 +59,8 @@ public class ProductPage {
                 element.click();
             }
         }
+
+        driver.switchTo().window("https://www.vivacom.bg/online/shop/devices/product-category-smart-mobile-phones/apple-iphone-12-pro-max-128gb?offer=epc_kvr210408112430731635_so_zit210409143744776567");
 
     }
 

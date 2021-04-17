@@ -36,7 +36,7 @@ public class DevicePage {
        WebDriverWait wait = new WebDriverWait(driver,15);
         WebElement radioButton = wait.until(ExpectedConditions.
                 visibilityOfElementLocated(By
-                        .cssSelector("button[class='btn btn-success js-add-to-cart-btn js-prevent-dblclick']")));
+                        .cssSelector(" (//span[@class='simple-radio-btns-wrapper-span'])[2]")));
         if(!radioButton.isSelected()){
             radioButton.click();
         }

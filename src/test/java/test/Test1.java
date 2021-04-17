@@ -23,7 +23,6 @@ public class Test1 extends BaseTest {
         productPage.pressAppleCheckBoxButton();
         productPage.pressGoldCheckBoxButton();
         productPage.pressAppleIphone12ProMax128Gb();
-        productPage.switchToWindow();
         //Assertions.assertEquals(TEXT_MOBILE_PHONE_MODEL,devicePage.getMobilePhoneModel());
         Assertions.assertEquals(DEVICE_PAGE_TITLE,devicePage.getTitle());
 
