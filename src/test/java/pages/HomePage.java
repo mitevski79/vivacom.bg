@@ -30,4 +30,6 @@ public class HomePage {
         driver.findElement(By.xpath("//a[@title='Мобилни телефони']")).click();
 
     }
+
+
 }

@@ -50,7 +50,19 @@ public class ProductPage {
 
 
     public void pressAppleIphone12ProMax128Gb() {
-        String winHadleBefore = driver.getWindowHandle();
+        String currentWindowId = driver.getWindowHandle();
+
+        driver.findElement(By.cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")).click();
+
+        Set<String> allWindows = driver.getWindowHandles();
+        for (String windowId : allWindows){
+            if (driver.switchTo().window(windowId).getTitle().trim().equals("Устройство | VIVACOM")) {
+                //Close the Visit Us Popup Window
+                //driver.close();
+                break;
+            }
+        }
+       /*
         System.out.println("Pressing Apple Iphone 12 pro max 128 GB  from the  menu");
         List<WebElement> allLinks = driver.findElements(LOC_MOBILE_PHONES_LIST);
 
@@ -58,9 +70,9 @@ public class ProductPage {
             if (element.getText().contains("APPLE IPHONE 12 PRO MAX 128G")) {
                 element.click();
             }
-        }
+        }*/
 
-        driver.switchTo().window("https://www.vivacom.bg/online/shop/devices/product-category-smart-mobile-phones/apple-iphone-12-pro-max-128gb?offer=epc_kvr210408112430731635_so_zit210409143744776567");
+
 
     }
 
