@@ -24,7 +24,7 @@ public class ShoppingBagPage {
         driver.findElement(By.name("vivacom-cart-link-button-continue-shopping")).click();
     }
 
-    public String geth2Text() {
+    public String getH2Text() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Моята кошница']")));
         return driver.findElement(By.xpath("//h2[text()='Моята кошница']")).getText();

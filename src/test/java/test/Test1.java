@@ -32,7 +32,7 @@ public class Test1 extends BaseTest {
 
         //Assertions.assertEquals(DEVICE_PRISE,devicePage.getPriceOfTheDevice());
         //devicePage.pressButtonShoppingCart();
-        //Assertions.assertEquals("Моята кошница",shoppingBagPage.geth2Text());
+        //Assertions.assertEquals("Моята кошница",shoppingBagPage.getH2Text());
        //Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE,shoppingBagPage.getTitle());
         //shoppingBagPage.pressButtonContinueShopping();
         //Assertions.assertEquals(PRODUCT_PAGE_TITLE, productPage.getTitle());
