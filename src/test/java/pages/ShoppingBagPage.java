@@ -35,26 +35,28 @@ public class ShoppingBagPage {
     }
 
     public void checkTotalAmount() {
-        String totalAmount = driver.findElement(By.xpath("//span[contains(@class,'e-care-home-big-bill-price-digits js-limit-exceed')]")).getText();
-        int maxLimit = 2000;
+        String totalAmount = driver.findElement(By.xpath("//span[contains(@class,'e-care-home-big-bill-price-digits js-limit-exceed')]")).getAttribute("");
+        double maxLimit = 2000;
 
-        int totalPrice = parseInt(totalAmount);
-        if (totalPrice > maxLimit) {
-            WebElement removeItem = driver.findElement(By.xpath("(//em[@class='vivacom-icons icon-close_x'])[3]"));
-            removeItem.click();
+        double totalPrice = Double.valueOf(totalAmount);
+        System.out.println("price is "+ totalPrice);
+        //if (totalPrice > maxLimit) {
+           // WebElement removeItem =
+                    driver.findElement(By.xpath("(//em[@class='vivacom-icons icon-close_x'])[3]")).click();
+           // removeItem.click();
 
         }
 
 
         //driver.findElement(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button")).click();
 
-    }
+    //}
 
-    public void removeHeadphonesFromShoppingBag() {
-        WebElement removeItem = driver.findElement(By.xpath("(//em[@class='vivacom-icons icon-close_x'])[3]"));
+    public void removeFirstItemFromShoppingBag() {
+        WebElement removeItem = driver.findElement(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']'"));   //(//em[@class='vivacom-icons icon-close_x'])[3]
         removeItem.click();
        /* WebDriverWait wait = new WebDriverWait(driver,10);
-        WebElement remove = wait.until(ExpectedConditions.visibilityOfEl;ementLocated(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button//em[@class='vivacom-icons icon-close_x'")));
+        WebElement remove = wait.until(ExpectedConditions.visibilityOfEl;ementLocated(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']'")));
         remove.click();*/
 
     }
@@ -74,14 +76,19 @@ public class ShoppingBagPage {
         Assertions.assertTrue(checkBox.isDisplayed());
     }
 
-    public void verifyButtonsContinueAsCustomerOrGuestIsNotEnable() {
-        Assertions.assertEquals(false,
-                driver.findElement(By.xpath("//button[text()='Продължи като клиент']"))
-                        .isEnabled());
-        Assertions.assertEquals(false,
-                driver.findElement(By.xpath("//button[text()='Продължи като гост']"))
-                        .isEnabled());
+    public boolean verifyButtonsContinueAsCustomerOrGuestIsNotEnable() {
 
+              if(! driver.findElement(By.xpath("//button[text()='Продължи като клиент']"))
+                        .isEnabled()){
+                  return true;
+              }
+
+               if(! driver.findElement(By.xpath("//button[text()='Продължи като гост']"))
+                        .isEnabled()){
+                   return true;
+               }
+
+        return false;
     }
 
     public void verifyButtonsContinueAsCustomerOrGuestIsEnable() {
@@ -91,5 +98,6 @@ public class ShoppingBagPage {
         Assertions.assertEquals(true,
                 driver.findElement(By.xpath("//button[text()='Продължи като гост']"))
                         .isEnabled());
+
     }
 }

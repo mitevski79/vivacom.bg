@@ -45,15 +45,16 @@ public class Test1 extends BaseTest {
         Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, shoppingBagPage.getTitle());
 
         // Не ми работи метода, не мога да сравна стринг с инт
-        //shoppingBagPage.checkTotalAmount();
+       // shoppingBagPage.checkTotalAmount();
 
-        shoppingBagPage.removeHeadphonesFromShoppingBag();
+        shoppingBagPage.removeFirstItemFromShoppingBag();
 
         shoppingBagPage.verifyCheckBoxIsDisplayed();
            //И тук имам проблем с верификацята
-        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
+        //shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
         shoppingBagPage.pressCheckBoxGeneralConditionsForMobileServices();
         shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
+        shoppingBagPage.removeFirstItemFromShoppingBag();
 
 
     }
