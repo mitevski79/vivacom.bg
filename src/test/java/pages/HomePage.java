@@ -32,4 +32,7 @@ public class HomePage {
     }
 
 
+    public void pressAccessoriesLinkButton() {
+        driver.findElement(By.xpath("//a[@href='/online/bg/shop/devices/listing?navigation=product-category-accessories']")).click();
+    }
 }

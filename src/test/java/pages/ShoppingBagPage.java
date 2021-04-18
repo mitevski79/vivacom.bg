@@ -21,6 +21,7 @@ public class ShoppingBagPage {
     }
 
     public void pressButtonContinueShopping() {
+        System.out.println("Pressing Continue Shopping button");
         driver.findElement(By.name("vivacom-cart-link-button-continue-shopping")).click();
     }
 

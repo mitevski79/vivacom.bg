@@ -29,18 +29,13 @@ public class DevicePage {
 
 
     public void pressRadioButtonForOneTimePayment() {
-       /* WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement radioButton = wait.until(ExpectedConditions.
-                visibilityOfElementLocated(By
-                        .xpath("(//span[@class='simple-radio-btns-wrapper-span'])[2]")));
-        if (!radioButton.isSelected()) {
-            radioButton.click();
-        }*/
-        System.out.println("Pressing radio button   from the  menu");
+        System.out.println("Pressing radio button cash price from the  menu");
+        //driver.findElement(By.xpath("//span[contains(@class,'cash-price-span') and contains(text(),'1979')")).click();
+
         List<WebElement> radioButtons = driver.findElements(By.xpath("//span[@class='e-care-home-big-bill-price-digits js-related-offer-cash-price-span']"));
 
         for (WebElement element : radioButtons) {
-            if (element.getAttribute("style").contains("1979.98") && !element.isSelected()) {
+            if (element.getText().contains("1979.98")) {
                 element.click();
             }
 
