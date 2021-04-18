@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static java.lang.Integer.parseInt;
+
 
 public class ShoppingBagPage {
 
@@ -33,28 +35,48 @@ public class ShoppingBagPage {
     }
 
     public void checkTotalAmount() {
-        /*String totalAmount = driver.findElement(By.xpath("//span[contains(@class,'e-care-home-big-bill-price-digits js-limit-exceed')]")).getText();
+        String totalAmount = driver.findElement(By.xpath("//span[contains(@class,'e-care-home-big-bill-price-digits js-limit-exceed')]")).getText();
         int maxLimit =2000;
-        try {
-            int totalPrice = Integer.parseInt(totalAmount);
+
+            int totalPrice = parseInt(totalAmount);
             if( totalPrice > maxLimit){
-                driver.findElement(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button")).click();
+                WebElement removeItem = driver.findElement(By.xpath("(//em[@class='vivacom-icons icon-close_x'])[3]"));
+                removeItem.click();
+
             }
 
-        }
-        catch (NumberFormatException e){
-            System.out.println("not a number");
 
-        }*/
-        driver.findElement(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button")).click();
+
+        //driver.findElement(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button")).click();
 
     }
 
     public void removeHeadphonesFromShoppingBag() {
-        driver.findElement(By.xpath("em[class='vivacom-icons icon-close_x']")).click();
+        WebElement removeItem = driver.findElement(By.xpath("(//em[@class='vivacom-icons icon-close_x'])[3]"));
+        removeItem.click();
        /* WebDriverWait wait = new WebDriverWait(driver,10);
-        WebElement remove = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button//em[@class='vivacom-icons icon-close_x'")));
+        WebElement remove = wait.until(ExpectedConditions.visibilityOfEl;ementLocated(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button//em[@class='vivacom-icons icon-close_x'")));
         remove.click();*/
 
+    }
+
+    public void pressCheckBoxGeneralConditionsForMobileServices() {
+
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebElement checkBox= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icon icon-box_empty']")));
+
+        if(!checkBox.isSelected()){
+            checkBox.click();
+        }
+    }
+
+    public void verifyCheckBoxIsDisplayed() {
+        WebElement checkBox = driver.findElement(By.xpath("//input[@id='mobile-termes-and-conditions']/.."));
+        Assertions.assertTrue(checkBox.isDisplayed());
+    }
+
+    public void verifyButtonsContinueAsCustomerOrGuestIsNotEnable() {
+        Assertions.assertFalse(driver.findElement(By.xpath("//button[text()='Продължи като клиент']")).isEnabled());
+        Assertions.assertFalse(driver.findElement(By.xpath("//button[text()='Продължи като гост']")).isEnabled());
     }
 }
