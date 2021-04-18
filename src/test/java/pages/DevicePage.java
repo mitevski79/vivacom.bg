@@ -23,7 +23,7 @@ public class DevicePage {
         return driver.getTitle().trim();
     }
 
-    public String getMobilePhoneModel() {
+    public String getProductModel() {
         return driver.findElement(By.cssSelector("#summaryBarOfferTitleSpanId")).getText().trim();
     }
 
