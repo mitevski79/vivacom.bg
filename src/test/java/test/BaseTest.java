@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.DevicePage;
 import pages.HomePage;
 import pages.ProductPage;
+import pages.ShoppingBagPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +18,7 @@ public class BaseTest {
     protected HomePage homePage;
     protected ProductPage productPage;
     protected DevicePage devicePage;
+    protected ShoppingBagPage shoppingBagPage;
 
 
     @BeforeAll
@@ -36,6 +38,9 @@ public class BaseTest {
 
         homePage = new HomePage(driver);
         productPage = new ProductPage(driver);
+        devicePage =new DevicePage(driver);
+        shoppingBagPage = new ShoppingBagPage(driver);
+
     }
 
     @AfterEach

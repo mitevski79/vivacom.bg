@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class DevicePage {
 
     public static final By LOC_TEXT_MOBILE_PHONE_MODEL = By.cssSelector("#summaryBarOfferTitleSpanId");
@@ -27,15 +29,22 @@ public class DevicePage {
 
 
     public void pressRadioButtonForOneTimePayment() {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+       /* WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement radioButton = wait.until(ExpectedConditions.
                 visibilityOfElementLocated(By
-                        .xpath(" (//span[@class='simple-radio-btns-wrapper-span'])[2]")));
+                        .xpath("(//span[@class='simple-radio-btns-wrapper-span'])[2]")));
         if (!radioButton.isSelected()) {
             radioButton.click();
+        }*/
+        System.out.println("Pressing radio button   from the  menu");
+        List<WebElement> radioButtons = driver.findElements(By.xpath("//span[@class='e-care-home-big-bill-price-digits js-related-offer-cash-price-span']"));
+
+        for (WebElement element : radioButtons) {
+            if (element.getAttribute("style").contains("1979.98") && !element.isSelected()) {
+                element.click();
+            }
+
         }
-
-
     }
 
     public String getPriceOfTheDevice() {
