@@ -51,9 +51,9 @@ public class Test1 extends BaseTest {
 
         shoppingBagPage.verifyCheckBoxIsDisplayed();
            //И тук имам проблем с верификацята
-        //shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
-
+        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
         shoppingBagPage.pressCheckBoxGeneralConditionsForMobileServices();
+        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
 
 
     }

@@ -36,15 +36,14 @@ public class ShoppingBagPage {
 
     public void checkTotalAmount() {
         String totalAmount = driver.findElement(By.xpath("//span[contains(@class,'e-care-home-big-bill-price-digits js-limit-exceed')]")).getText();
-        int maxLimit =2000;
+        int maxLimit = 2000;
 
-            int totalPrice = parseInt(totalAmount);
-            if( totalPrice > maxLimit){
-                WebElement removeItem = driver.findElement(By.xpath("(//em[@class='vivacom-icons icon-close_x'])[3]"));
-                removeItem.click();
+        int totalPrice = parseInt(totalAmount);
+        if (totalPrice > maxLimit) {
+            WebElement removeItem = driver.findElement(By.xpath("(//em[@class='vivacom-icons icon-close_x'])[3]"));
+            removeItem.click();
 
-            }
-
+        }
 
 
         //driver.findElement(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button")).click();
@@ -62,10 +61,10 @@ public class ShoppingBagPage {
 
     public void pressCheckBoxGeneralConditionsForMobileServices() {
 
-        WebDriverWait wait = new WebDriverWait(driver,10);
-        WebElement checkBox= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icon icon-box_empty']")));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement checkBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icon icon-box_empty']")));
 
-        if(!checkBox.isSelected()){
+        if (!checkBox.isSelected()) {
             checkBox.click();
         }
     }
@@ -76,7 +75,21 @@ public class ShoppingBagPage {
     }
 
     public void verifyButtonsContinueAsCustomerOrGuestIsNotEnable() {
-        Assertions.assertFalse(driver.findElement(By.xpath("//button[text()='Продължи като клиент']")).isEnabled());
-        Assertions.assertFalse(driver.findElement(By.xpath("//button[text()='Продължи като гост']")).isEnabled());
+        Assertions.assertEquals(false,
+                driver.findElement(By.xpath("//button[text()='Продължи като клиент']"))
+                        .isEnabled());
+        Assertions.assertEquals(false,
+                driver.findElement(By.xpath("//button[text()='Продължи като гост']"))
+                        .isEnabled());
+
+    }
+
+    public void verifyButtonsContinueAsCustomerOrGuestIsEnable() {
+        Assertions.assertEquals(true,
+                driver.findElement(By.xpath("//button[text()='Продължи като клиент']"))
+                        .isEnabled());
+        Assertions.assertEquals(true,
+                driver.findElement(By.xpath("//button[text()='Продължи като гост']"))
+                        .isEnabled());
     }
 }
