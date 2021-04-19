@@ -56,9 +56,12 @@ public class AddAndDeleteProductsTest extends BaseTest {
 
         shoppingBagPage.verifyCheckBoxIsDisplayed();
 
-        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
+        shoppingBagPage.buttonContinueAsCustomerIsNotEnabled();
+        shoppingBagPage.buttonContinueAsGuestIsNotEnabled();
+
         shoppingBagPage.pressCheckBoxGeneralConditionsForMobileServices();
-        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
+        shoppingBagPage.buttonContinueAsCustomerIsEnabled();
+        shoppingBagPage.buttonContinueAsGuestIsEnabled();
 
         shoppingBagPage.removeFirstItemFromShoppingBag();
         shoppingBagPage.verifyThatTheShoppingBagIsEmpty();

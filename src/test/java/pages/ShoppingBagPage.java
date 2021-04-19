@@ -74,11 +74,6 @@ public class ShoppingBagPage {
         return driver.findElement(By.xpath("//button[text()='Продължи като гост']")).isEnabled();
     }
 
-    public void verifyButtonsContinueAsCustomerOrGuestIsNotEnable() {
-        buttonContinueAsCustomerIsNotEnabled();
-        buttonContinueAsGuestIsNotEnabled();
-
-    }
 
     public void pressCheckBoxGeneralConditionsForMobileServices() {
         System.out.println("Pressing General Conditions check box  button from shopping bag");
@@ -92,10 +87,6 @@ public class ShoppingBagPage {
 
     }
 
-    public void verifyButtonsContinueAsCustomerOrGuestIsEnable() {
-        buttonContinueAsCustomerIsEnabled();
-        buttonContinueAsGuestIsEnabled();
-    }
 
     public void removeFirstItemFromShoppingBag() {
         System.out.println("Pressing Close button from shopping bag ");
