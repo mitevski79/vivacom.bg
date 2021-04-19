@@ -55,8 +55,6 @@ public class ProductPage {
                         .xpath("//h3[text()='APPLE IPHONE 12 PRO MAX 128GB']")));
         radioButton.click();
 
-        //driver.findElement(By.cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")).click();
-
 
         /*System.out.println("Pressing Apple Iphone 12 pro max 128 GB  from the  menu");
         List<WebElement> allLinks = driver.findElements(LOC_MOBILE_PHONES_LIST);

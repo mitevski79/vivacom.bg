@@ -27,7 +27,7 @@ public class ShoppingBagPage {
         System.out.println("Pressing Continue Shopping button");
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Моята кошница']")));
-        //driver.findElement(By.name("vivacom-cart-link-button-continue-shopping")).click();
+
         driver.findElement(By.xpath("//a[@href='/online/bg/shop/devices/listing']")).click();
     }
 
@@ -93,7 +93,7 @@ public class ShoppingBagPage {
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement removeItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']")));
-        // WebElement removeItem = driver.findElement(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']"));
+
         removeItem.click();
 
 
