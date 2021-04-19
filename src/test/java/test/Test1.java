@@ -29,7 +29,6 @@ public class Test1 extends BaseTest {
         productPage.pressAppleIphone12ProMax128Gb();
         Assertions.assertEquals(DEVICE_PAGE_TITLE, devicePage.getTitle());
         Assertions.assertEquals(TEXT_MOBILE_PHONE_MODEL, devicePage.getProductModel());
-
         devicePage.pressRadioButtonForOneTimePayment();
         Assertions.assertEquals(DEVICE_PRISE, devicePage.getPriceOfTheDevice());
 
@@ -63,11 +62,11 @@ public class Test1 extends BaseTest {
 
 
            //И тук имам проблем с верификацята
-        //shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
+        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
 
         shoppingBagPage.pressCheckBoxGeneralConditionsForMobileServices();
 
-        //shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
+        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
 
         shoppingBagPage.removeFirstItemFromShoppingBag();
         //shoppingBagPage.ckick();

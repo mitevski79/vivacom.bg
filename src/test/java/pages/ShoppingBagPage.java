@@ -25,6 +25,9 @@ public class ShoppingBagPage {
 
     public void pressButtonContinueShopping() {
         System.out.println("Pressing Continue Shopping button");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Моята кошница']")));
+
         driver.findElement(By.name("vivacom-cart-link-button-continue-shopping")).click();
     }
 
@@ -43,17 +46,17 @@ public class ShoppingBagPage {
             WebElement removeItem = driver.findElement(By.xpath("(//em[@class='vivacom-icons icon-close_x'])[3]"));
             removeItem.click();
         }
-        }
+    }
 
 
-        //driver.findElement(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button")).click();
+    //driver.findElement(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button")).click();
 
     //}
 
     public void removeFirstItemFromShoppingBag() {
-        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement removeItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']")));
-       // WebElement removeItem = driver.findElement(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']"));
+        // WebElement removeItem = driver.findElement(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']"));
         removeItem.click();
 
 
@@ -64,9 +67,9 @@ public class ShoppingBagPage {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement checkBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icon icon-box_empty']")));
 
-        //if (!checkBox.isSelected()) {
+        if (!checkBox.isSelected()) {
             checkBox.click();
-       // }
+        }
     }
 
     public void verifyCheckBoxIsDisplayed() {
@@ -74,19 +77,17 @@ public class ShoppingBagPage {
         Assertions.assertTrue(checkBox.isDisplayed());
     }
 
-    public boolean verifyButtonsContinueAsCustomerOrGuestIsNotEnable() {
+    public void verifyButtonsContinueAsCustomerOrGuestIsNotEnable() {
 
-              if(! driver.findElement(By.xpath("//button[text()='Продължи като клиент']"))
-                        .isEnabled()){
-                  return true;
-              }
+        WebElement verifyOne = driver.findElement(By.xpath("//button[text()='Продължи като клиент']"));
 
-               if(! driver.findElement(By.xpath("//button[text()='Продължи като гост']"))
-                        .isEnabled()){
-                   return true;
-               }
+        Assertions.assertFalse(verifyOne.isEnabled());
 
-        return false;
+
+        WebElement verifyTwo = driver.findElement(By.xpath("//button[text()='Продължи като гост']"));
+        Assertions.assertFalse(verifyTwo.isEnabled());
+
+
     }
 
     public void verifyButtonsContinueAsCustomerOrGuestIsEnable() {
@@ -99,7 +100,7 @@ public class ShoppingBagPage {
 
     }
 
-    public  void ckick(){
+    public void ckick() {
         driver.findElement(By.cssSelector("form[id='jsRemoveItemForm-1238263'] button[class='btn-close'] em")).click();
     }
 }
