@@ -28,7 +28,6 @@ public class ProductPage {
     }
 
     public void pressAppleCheckBoxButton() {
-
         System.out.println("Pressing APPLE check box  button from the manufacturer menu");
         WebElement buttonApple = driver.findElement(By.xpath("//span[@class='analytics-skip'and text()='APPLE']//..//em"));
         if (!buttonApple.isSelected()) {
@@ -50,13 +49,13 @@ public class ProductPage {
 
     public void pressAppleIphone12ProMax128Gb() {
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+       WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement radioButton = wait.until(ExpectedConditions.
                 visibilityOfElementLocated(By
-                        .cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")));
+                        .xpath("//h3[text()='APPLE IPHONE 12 PRO MAX 128GB']")));
         radioButton.click();
 
-        // driver.findElement(By.cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")).click();
+        //driver.findElement(By.cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")).click();
 
 
         /*System.out.println("Pressing Apple Iphone 12 pro max 128 GB  from the  menu");

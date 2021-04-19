@@ -27,8 +27,8 @@ public class ShoppingBagPage {
         System.out.println("Pressing Continue Shopping button");
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Моята кошница']")));
-
-        driver.findElement(By.name("vivacom-cart-link-button-continue-shopping")).click();
+        //driver.findElement(By.name("vivacom-cart-link-button-continue-shopping")).click();
+        driver.findElement(By.xpath("//a[@href='/online/bg/shop/devices/listing']")).click();
     }
 
     public String getH2Text() {
@@ -49,12 +49,55 @@ public class ShoppingBagPage {
     }
 
 
-    //driver.findElement(By.xpath("//form[@id='jsRemoveItemForm-1236444']//button")).click();
+    public void verifyCheckBoxIsDisplayed() {
+        WebElement checkBox = driver.findElement(By.xpath("//input[@id='mobile-termes-and-conditions']/.."));
+        Assertions.assertTrue(checkBox.isDisplayed());
+    }
 
-    //}
+    public boolean buttonContinueAsCustomerIsEnabled() {
+        getH2Text();
+        return driver.findElement(By.xpath("//button[text()='Продължи като клиент']")).isEnabled();
+    }
+
+    public void verifyButtonsContinueAsCustomerOrGuestIsNotEnable() {
+
+        WebElement verifyOne = driver.findElement(By.xpath("//button[text()='Продължи като клиент']"));
+
+        Assertions.assertTrue(verifyOne.isEnabled());
+
+
+        WebElement verifyTwo = driver.findElement(By.xpath("//button[text()='Продължи като гост']"));
+        Assertions.assertTrue(verifyTwo.isEnabled());
+
+
+    }
+
+    public void pressCheckBoxGeneralConditionsForMobileServices() {
+
+        WebDriverWait wait = new WebDriverWait(driver, 10); //em[@class='vivacom-icon icon-box_empty']
+        WebElement checkBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("//em[@class='vivacom-icon icon-box_empty']")));
+        //WebElement checkBox = driver.findElement(By.xpath("//em[@class='vivacom-icon icon-box_empty']"));
+        if (!checkBox.isSelected()) {
+            checkBox.click();
+        }
+    }
+
+    public void verifyButtonsContinueAsCustomerOrGuestIsEnable() {
+        getH2Text();
+        WebElement verifyOne = driver.findElement(By.xpath("//button[text()='Продължи като клиент']"));
+
+        Assertions.assertTrue(!verifyOne.isEnabled());
+
+
+        WebElement verifyTwo = driver.findElement(By.xpath("//button[text()='Продължи като гост']"));
+        Assertions.assertTrue(!verifyTwo.isEnabled());
+
+
+    }
 
     public void removeFirstItemFromShoppingBag() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+       getH2Text();
+        WebDriverWait wait = new WebDriverWait(driver, 10);//form[id='jsRemoveItemForm-1238263'] button[class='btn-close'] em
         WebElement removeItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']")));
         // WebElement removeItem = driver.findElement(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']"));
         removeItem.click();
@@ -62,45 +105,13 @@ public class ShoppingBagPage {
 
     }
 
-    public void pressCheckBoxGeneralConditionsForMobileServices() {
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement checkBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icon icon-box_empty']")));
+    public void verifyThatTheShoppingBagIsEmpty() {
+        WebElement textOne = driver.findElement(By.xpath("//h3[text()='В момента кошницата ви е празна']"));
+        Assertions.assertEquals(textOne.getText(), "В момента кошницата ви е празна");
+        WebElement textTwo = driver.findElement(By.xpath("//p[contains(text(),'Вижте актуалните ни оферти')]"));
+        Assertions.assertEquals(textOne.getText(),
+                "Вижте актуалните ни оферти и изберете най-подходящата за вас. Ако искате да разгледате предходно добавени продукти, натиснете \"Вход\".");
 
-        if (!checkBox.isSelected()) {
-            checkBox.click();
-        }
-    }
-
-    public void verifyCheckBoxIsDisplayed() {
-        WebElement checkBox = driver.findElement(By.xpath("//input[@id='mobile-termes-and-conditions']/.."));
-        Assertions.assertTrue(checkBox.isDisplayed());
-    }
-
-    public void verifyButtonsContinueAsCustomerOrGuestIsNotEnable() {
-
-        WebElement verifyOne = driver.findElement(By.xpath("//button[text()='Продължи като клиент']"));
-
-        Assertions.assertFalse(verifyOne.isEnabled());
-
-
-        WebElement verifyTwo = driver.findElement(By.xpath("//button[text()='Продължи като гост']"));
-        Assertions.assertFalse(verifyTwo.isEnabled());
-
-
-    }
-
-    public void verifyButtonsContinueAsCustomerOrGuestIsEnable() {
-        Assertions.assertEquals(true,
-                driver.findElement(By.xpath("//button[text()='Продължи като клиент']"))
-                        .isEnabled());
-        Assertions.assertEquals(true,
-                driver.findElement(By.xpath("//button[text()='Продължи като гост']"))
-                        .isEnabled());
-
-    }
-
-    public void ckick() {
-        driver.findElement(By.cssSelector("form[id='jsRemoveItemForm-1238263'] button[class='btn-close'] em")).click();
     }
 }

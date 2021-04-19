@@ -30,16 +30,19 @@ public class DevicePage {
 
     public void pressRadioButtonForOneTimePayment() {
         System.out.println("Pressing radio button cash price from the  menu");
-        //driver.findElement(By.xpath("//span[contains(@class,'cash-price-span') and contains(text(),'1979')")).click();
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class,'cash-price-span') and contains(text(),'1979')]")));
+        button.click();
+        //driver.findElement(By.xpath("//span[contains(@class,'cash-price-span') and contains(text(),'1979')]")).click();
 
-        List<WebElement> radioButtons = driver.findElements(By.xpath("//span[@class='e-care-home-big-bill-price-digits js-related-offer-cash-price-span']"));
+        /*List<WebElement> radioButtons = driver.findElements(By.xpath("//span[@class='e-care-home-big-bill-price-digits js-related-offer-cash-price-span']"));
 
         for (WebElement element : radioButtons) {
             if (element.getText().contains("1979.98")) {
                 element.click();
             }
 
-        }
+        }*/
     }
 
     public String getPriceOfTheDevice() {

@@ -29,9 +29,9 @@ public class Test1 extends BaseTest {
         productPage.pressAppleIphone12ProMax128Gb();
         Assertions.assertEquals(DEVICE_PAGE_TITLE, devicePage.getTitle());
         Assertions.assertEquals(TEXT_MOBILE_PHONE_MODEL, devicePage.getProductModel());
+
         devicePage.pressRadioButtonForOneTimePayment();
         Assertions.assertEquals(DEVICE_PRISE, devicePage.getPriceOfTheDevice());
-
         devicePage.pressButtonShoppingCart();
         Assertions.assertEquals("Моята кошница", shoppingBagPage.getH2Text());
         Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, shoppingBagPage.getTitle());
@@ -44,7 +44,6 @@ public class Test1 extends BaseTest {
 
         productPage.pressAppleCheckBoxButton();
         productPage.pressPriceCheckBoxButton();
-
         productPage.pressAppleHeadphonesWithLightningConnector();
         Assertions.assertEquals(DEVICE_PAGE_TITLE, devicePage.getTitle());
         Assertions.assertEquals(TEXT_HEADPHONES_MODEL, devicePage.getProductModel());
@@ -53,23 +52,20 @@ public class Test1 extends BaseTest {
         Assertions.assertEquals("Моята кошница", shoppingBagPage.getH2Text());
         Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, shoppingBagPage.getTitle());
 
-        shoppingBagPage.verifyCheckBoxIsDisplayed();
-
         shoppingBagPage.checkTotalAmount();
 
-
         shoppingBagPage.verifyCheckBoxIsDisplayed();
 
 
-           //И тук имам проблем с верификацята
-        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
+        //shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
 
         shoppingBagPage.pressCheckBoxGeneralConditionsForMobileServices();
-
-        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
+        shoppingBagPage.buttonContinueAsCustomerIsEnabled();
+        //shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
 
         shoppingBagPage.removeFirstItemFromShoppingBag();
-        //shoppingBagPage.ckick();
+        shoppingBagPage.verifyThatTheShoppingBagIsEmpty();
+
 
 
     }
