@@ -50,23 +50,23 @@ public class ProductPage {
 
     public void pressAppleIphone12ProMax128Gb() {
 
-     //  WebDriverWait wait = new WebDriverWait(driver, 10);
-      //  WebElement radioButton = wait.until(ExpectedConditions.
-              //  visibilityOfElementLocated(By
-                        //.cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")));
-       // radioButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement radioButton = wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By
+                        .cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")));
+        radioButton.click();
 
         // driver.findElement(By.cssSelector("a[href*='apple-iphone-12-pro-max-128gb']")).click();
 
 
-        System.out.println("Pressing Apple Iphone 12 pro max 128 GB  from the  menu");
+        /*System.out.println("Pressing Apple Iphone 12 pro max 128 GB  from the  menu");
         List<WebElement> allLinks = driver.findElements(LOC_MOBILE_PHONES_LIST);
 
         for (WebElement element : allLinks) {
             if (element.getText().contains("APPLE IPHONE 12 PRO MAX 128G")) {
                 element.click();
             }
-        }
+        }*/
     }
 
 

@@ -53,7 +53,9 @@ public class ShoppingBagPage {
     //}
 
     public void removeFirstItemFromShoppingBag() {
-        WebElement removeItem = driver.findElement(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']'"));   //(//em[@class='vivacom-icons icon-close_x'])[3]
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebElement removeItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']")));
+       // WebElement removeItem = driver.findElement(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']"));   //(//em[@class='vivacom-icons icon-close_x'])[3]
         removeItem.click();
        /* WebDriverWait wait = new WebDriverWait(driver,10);
         WebElement remove = wait.until(ExpectedConditions.visibilityOfEl;ementLocated(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']'")));
