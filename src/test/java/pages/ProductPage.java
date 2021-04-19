@@ -48,7 +48,7 @@ public class ProductPage {
 
 
     public void pressAppleIphone12ProMax128Gb() {
-
+        System.out.println("Pressing link phone model Apple Iphone 12 Pro Max 128 GB");
        WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement radioButton = wait.until(ExpectedConditions.
                 visibilityOfElementLocated(By
@@ -79,11 +79,12 @@ public class ProductPage {
     }
 
     public void pressAppleHeadphonesWithLightningConnector() {
+        System.out.println("Pressing link phone Headphones model Apple ");
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement button = wait.until(ExpectedConditions.
                 visibilityOfElementLocated(By
                         .cssSelector("a[href*='lightning-connector']")));
         button.click();
-        //driver.findElement(By.cssSelector("a[href*='lightning-connector']"));
+
     }
 }

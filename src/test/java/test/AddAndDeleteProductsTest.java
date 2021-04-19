@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-public class Test1 extends BaseTest {
+public class AddAndDeleteProductsTest extends BaseTest {
     private static final String PRODUCT_PAGE_TITLE = "Продуктова страница | VIVACOM";
     private static final String DEVICE_PAGE_TITLE = "Устройство | VIVACOM";
     private static final String TEXT_MOBILE_PHONE_MODEL = "APPLE IPHONE 12 PRO MAX 128GB";
@@ -15,8 +15,8 @@ public class Test1 extends BaseTest {
 
 
     @Test
-    @DisplayName("Аdd a mobile phone to the cart")
-    public void addMobilePhoneToTheCart() {
+    @DisplayName("Аdd and delete products in shopping bag")
+    public void addAndDeleteProductsInShoppingBag() {
         homePage.navigateTo();
         homePage.pressDevicesDropdownButton();
 
@@ -56,12 +56,9 @@ public class Test1 extends BaseTest {
 
         shoppingBagPage.verifyCheckBoxIsDisplayed();
 
-
-        //shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
-
+        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
         shoppingBagPage.pressCheckBoxGeneralConditionsForMobileServices();
-        shoppingBagPage.buttonContinueAsCustomerIsEnabled();
-        //shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
+        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
 
         shoppingBagPage.removeFirstItemFromShoppingBag();
         shoppingBagPage.verifyThatTheShoppingBagIsEmpty();

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DevicePage {
 
-    public static final By LOC_TEXT_MOBILE_PHONE_MODEL = By.cssSelector("#summaryBarOfferTitleSpanId");
+
 
     private WebDriver driver;
 
