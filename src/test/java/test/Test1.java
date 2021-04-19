@@ -19,63 +19,62 @@ public class Test1 extends BaseTest {
     public void addMobilePhoneToTheCart() {
         homePage.navigateTo();
         homePage.pressDevicesDropdownButton();
+
         homePage.pressMobilePhonesLink();
         Assertions.assertEquals(PRODUCT_PAGE_TITLE, productPage.getTitle());
+
         productPage.pressAppleCheckBoxButton();
         productPage.pressGoldCheckBoxButton();
+
         productPage.pressAppleIphone12ProMax128Gb();
         Assertions.assertEquals(DEVICE_PAGE_TITLE, devicePage.getTitle());
         Assertions.assertEquals(TEXT_MOBILE_PHONE_MODEL, devicePage.getProductModel());
+
         devicePage.pressRadioButtonForOneTimePayment();
         Assertions.assertEquals(DEVICE_PRISE, devicePage.getPriceOfTheDevice());
+
         devicePage.pressButtonShoppingCart();
         Assertions.assertEquals("Моята кошница", shoppingBagPage.getH2Text());
         Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, shoppingBagPage.getTitle());
+
         shoppingBagPage.pressButtonContinueShopping();
         Assertions.assertEquals(PRODUCT_PAGE_TITLE, productPage.getTitle());
+
         homePage.pressDevicesDropdownButton();
         homePage.pressAccessoriesLinkButton();
+
         productPage.pressAppleCheckBoxButton();
         productPage.pressPriceCheckBoxButton();
+
         productPage.pressAppleHeadphonesWithLightningConnector();
         Assertions.assertEquals(DEVICE_PAGE_TITLE, devicePage.getTitle());
         Assertions.assertEquals(TEXT_HEADPHONES_MODEL, devicePage.getProductModel());
+
         devicePage.pressButtonShoppingCart();
         Assertions.assertEquals("Моята кошница", shoppingBagPage.getH2Text());
         Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, shoppingBagPage.getTitle());
 
-        // Не ми работи метода, не мога да сравна стринг с инт
-       // shoppingBagPage.checkTotalAmount();
+        shoppingBagPage.verifyCheckBoxIsDisplayed();
 
-        shoppingBagPage.removeFirstItemFromShoppingBag();
+        shoppingBagPage.checkTotalAmount();
+
 
         shoppingBagPage.verifyCheckBoxIsDisplayed();
+
+
            //И тук имам проблем с верификацята
         //shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsNotEnable();
+
         shoppingBagPage.pressCheckBoxGeneralConditionsForMobileServices();
-        shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
+
+        //shoppingBagPage.verifyButtonsContinueAsCustomerOrGuestIsEnable();
+
         shoppingBagPage.removeFirstItemFromShoppingBag();
+        //shoppingBagPage.ckick();
 
 
     }
 
-  /*  @Test
-    @DisplayName("Аdd a accessory to the cart")
-    public void addAccessoryToTheCart() {
-        homePage.navigateTo();
-        homePage.pressDevicesDropdownButton();
-        homePage.pressAccessoriesLinkButton();
-        productPage.pressAppleCheckBoxButton();
-        productPage.pressPriceCheckBoxButton();
-        productPage.pressAppleHeadphonesWithLightningConnector();
-        Assertions.assertEquals(DEVICE_PAGE_TITLE, devicePage.getTitle());
-        Assertions.assertEquals(TEXT_HEADPHONES_MODEL, devicePage.getProductModel());
-        devicePage.pressButtonShoppingCart();
-        Assertions.assertEquals("Моята кошница", shoppingBagPage.getH2Text());
-        Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, shoppingBagPage.getTitle());
-        shoppingBagPage.checkTotalAmount();
-       // shoppingBagPage.removeHeadphonesFromShoppingBag();
 
-    }*/
 
 }

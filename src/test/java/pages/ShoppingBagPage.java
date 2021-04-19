@@ -35,16 +35,14 @@ public class ShoppingBagPage {
     }
 
     public void checkTotalAmount() {
-        String totalAmount = driver.findElement(By.xpath("//span[contains(@class,'e-care-home-big-bill-price-digits js-limit-exceed')]")).getAttribute("");
+        String totalAmount = driver.findElement(By.xpath("//span[@class='summarize-order-price']//span[contains(@class,'prices-28 js-limit-exceed')]")).getText();
         double maxLimit = 2000;
 
-        double totalPrice = Double.valueOf(totalAmount);
-        System.out.println("price is "+ totalPrice);
-        //if (totalPrice > maxLimit) {
-           // WebElement removeItem =
-                    driver.findElement(By.xpath("(//em[@class='vivacom-icons icon-close_x'])[3]")).click();
-           // removeItem.click();
-
+        double totalPrice = Double.parseDouble(totalAmount);
+        if (totalPrice > maxLimit) {
+            WebElement removeItem = driver.findElement(By.xpath("(//em[@class='vivacom-icons icon-close_x'])[3]"));
+            removeItem.click();
+        }
         }
 
 
@@ -55,11 +53,9 @@ public class ShoppingBagPage {
     public void removeFirstItemFromShoppingBag() {
         WebDriverWait wait = new WebDriverWait(driver,10);
         WebElement removeItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']")));
-       // WebElement removeItem = driver.findElement(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']"));   //(//em[@class='vivacom-icons icon-close_x'])[3]
+       // WebElement removeItem = driver.findElement(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']"));
         removeItem.click();
-       /* WebDriverWait wait = new WebDriverWait(driver,10);
-        WebElement remove = wait.until(ExpectedConditions.visibilityOfEl;ementLocated(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']'")));
-        remove.click();*/
+
 
     }
 
@@ -68,9 +64,9 @@ public class ShoppingBagPage {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement checkBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icon icon-box_empty']")));
 
-        if (!checkBox.isSelected()) {
+        //if (!checkBox.isSelected()) {
             checkBox.click();
-        }
+       // }
     }
 
     public void verifyCheckBoxIsDisplayed() {
@@ -101,5 +97,9 @@ public class ShoppingBagPage {
                 driver.findElement(By.xpath("//button[text()='Продължи като гост']"))
                         .isEnabled());
 
+    }
+
+    public  void ckick(){
+        driver.findElement(By.cssSelector("form[id='jsRemoveItemForm-1238263'] button[class='btn-close'] em")).click();
     }
 }
