@@ -17,7 +17,7 @@ public class AddAndDeleteProductsTest extends BaseTest {
     @Test
     @DisplayName("Аdd and delete products in shopping bag")
     public void addAndDeleteProductsInShoppingBag() {
-        homePage.navigateTo();
+        basePage.navigateTo();
         homePage.pressDevicesDropdownButton();
 
         homePage.pressMobilePhonesLink();

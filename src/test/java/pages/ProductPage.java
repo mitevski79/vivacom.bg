@@ -31,7 +31,7 @@ public class ProductPage extends BasePage{
 
 
     public void pressAppleCheckBoxButton() {
-        System.out.println("Pressing APPLE check box  button from the manufacturer menu");
+        System.out.println("Pressing APPLE checkbox  button from the manufacturer menu");
         waitForElementVisibility(LOC_APPLE_CHECKBOX_BUTTON);
         if(! driver.findElement(LOC_APPLE_CHECKBOX_BUTTON).isSelected()){
             clickButton(LOC_APPLE_CHECKBOX_BUTTON);
@@ -41,7 +41,7 @@ public class ProductPage extends BasePage{
     }
 
     public void pressGoldCheckBoxButton() {
-        System.out.println("Pressing GOLD check box  button from the manufacturer menu");
+        System.out.println("Pressing GOLD checkbox  button from the manufacturer menu");
         waitForElementVisibility(LOC_GOLD_CHECKBOX_BUTTON);
         if(! driver.findElement(LOC_GOLD_CHECKBOX_BUTTON).isSelected()){
             clickButton(LOC_GOLD_CHECKBOX_BUTTON);
@@ -58,7 +58,7 @@ public class ProductPage extends BasePage{
 
 
     public void pressPriceCheckBoxButton() {
-        System.out.println("Pressing GOLD check box  button from the manufacturer menu");
+        System.out.println("Pressing GOLD checkbox  button from the manufacturer menu");
         waitForElementVisibility(LOC_PRICE_CHECKBOX_BUTTON);
         if(! driver.findElement(LOC_PRICE_CHECKBOX_BUTTON).isSelected()){
             clickButton(LOC_PRICE_CHECKBOX_BUTTON);

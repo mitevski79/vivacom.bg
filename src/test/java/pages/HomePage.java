@@ -1,9 +1,9 @@
 package pages;
 
-import org.junit.jupiter.api.Assertions;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import test.BaseTest;
+
 
 public class HomePage extends BasePage {
 
@@ -15,20 +15,11 @@ public class HomePage extends BasePage {
             .xpath("//a[@href='/online/bg/shop/devices/listing?navigation=product-category-accessories']");
 
 
-    private WebDriver driver;
-
     public HomePage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
+
     }
 
-
-    public HomePage navigateTo() {
-        System.out.println("Navigating to Vivacom home page");
-         driver.navigate().to(Defaults.BASE_URL);
-        //driver.get("https://www.vivacom.bg/bg/");
-        return this;
-    }
 
     public void pressDevicesDropdownButton() {
         System.out.println("Pressing Device dropdown button from the menu");

@@ -18,6 +18,12 @@ public class BasePage {
 
     }
 
+    public BasePage navigateTo() {
+        System.out.println("Navigating to https://www.vivacom.bg/bg/");
+        driver.navigate().to(Defaults.BASE_URL);
+        return this;
+    }
+
     public String getTitle() {
         return driver.getTitle().trim();
     }
@@ -36,7 +42,6 @@ public class BasePage {
 
     public void waitForElementVisibility(By by) {
         WebDriverWait wait = new WebDriverWait(driver,15);
-        //org.openqa.selenium.support.ui.Wait<WebDriver> wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         wait.until(ExpectedConditions.elementToBeClickable(by));
     }
