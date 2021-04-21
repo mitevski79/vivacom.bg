@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class DevicePage extends BasePage {
 
     private static final By LOC_TEXT_PRODUCT_MODEL = By
-            .cssSelector("a[href*='lightning-connector']");
+            .cssSelector("#summaryBarOfferTitleSpanId");
     private static final By LOC_RADIO_BUTTON_ONE_TIME_PAYMENT = By
             .xpath("//span[contains(@class,'cash-price-span') and contains(text(),'1979')]");
     private static final By LOC_GET_PRICE_OF_THE_DEVICE = By

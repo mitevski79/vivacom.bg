@@ -9,7 +9,7 @@ public class ProductPage extends BasePage{
 
 
     private static final By LOC_APPLE_CHECKBOX_BUTTON = By
-            .xpath("//span[@class='analytics-skip'and text()='APPLE']//..//em]");
+            .xpath("//span[@class='analytics-skip'and text()='APPLE']//..//em");
     private  static final By LOC_GOLD_CHECKBOX_BUTTON = By
             .xpath("//span[@class='analytics-skip'and text()='GOLD']//..//em");
     private  static final By LOC_BUTTON_APPLE_IPHONE_12_PRO_MAX_128GB = By

@@ -84,7 +84,7 @@ public class ShoppingBagPage extends BasePage {
 
     public void pressCheckBoxGeneralConditionsForMobileServices() {
         System.out.println("Pressing General Conditions check box  button from shopping bag");
-        waitForElement(LOC_CHECKBOX_BUTTON_GENERAL_CONDITION);
+        //waitForElement(LOC_CHECKBOX_BUTTON_GENERAL_CONDITION);
         clickButton(LOC_CHECKBOX_BUTTON_GENERAL_CONDITION);
 
 

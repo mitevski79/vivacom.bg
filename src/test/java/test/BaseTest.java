@@ -33,10 +33,10 @@ public class BaseTest {
         driver.manage().window().maximize();
 
 
-      //  homePage = new HomePage(driver);
-       // productPage = new ProductPage(driver);
-       // devicePage =new DevicePage(driver);
-       // shoppingBagPage = new ShoppingBagPage(driver);
+        homePage = new HomePage(driver);
+        productPage = new ProductPage(driver);
+        devicePage =new DevicePage(driver);
+        shoppingBagPage = new ShoppingBagPage(driver);
         basePage = new BasePage(driver);
 
     }

@@ -25,7 +25,8 @@ public class HomePage extends BasePage {
 
     public HomePage navigateTo() {
         System.out.println("Navigating to Vivacom home page");
-        driver.navigate().to(Defaults.BASE_URL);
+         driver.navigate().to(Defaults.BASE_URL);
+        //driver.get("https://www.vivacom.bg/bg/");
         return this;
     }
 
