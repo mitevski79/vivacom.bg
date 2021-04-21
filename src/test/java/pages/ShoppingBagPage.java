@@ -100,7 +100,7 @@ public class ShoppingBagPage extends BasePage {
 
 
     public void verifyThatTheShoppingBagIsEmpty() {
-        Assertions.assertEquals(getText(LOC_FIRST_ITEM_FROM_SHOPPING_BAG), "В момента кошницата ви е празна");
+        Assertions.assertEquals(getText(LOC_FIRST_MESSAGE_FROM_EMPTY_SHOPPING_BAG), "В момента кошницата ви е празна");
         Assertions.assertEquals(getText(LOC_SECOND_MESSAGE_FROM_EMPTY_SHOPPING_BAG),
                 "Вижте актуалните ни оферти и изберете най-подходящата за вас. Ако искате да разгледате предходно добавени продукти, натиснете \"Вход\".");
 

@@ -37,6 +37,7 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -47,17 +48,14 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <rerunFailingTestsCount>1</rerunFailingTestsCount>
+                </configuration>
+                <version>2.19.1</version>
             </plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <configuration>
-                <rerunFailingTestsCount>1</rerunFailingTestsCount>
-            </configuration>
-            <version>2.19.1</version>
-        </plugin>
-
-
-
 
 
         </plugins>
