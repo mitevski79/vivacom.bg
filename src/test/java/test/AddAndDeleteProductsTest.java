@@ -45,12 +45,16 @@ public class AddAndDeleteProductsTest extends BaseTest {
         productPage.pressAppleCheckBoxButton();
         productPage.pressPriceCheckBoxButton();
         productPage.pressAppleHeadphonesWithLightningConnector();
-        Assertions.assertEquals(DEVICE_PAGE_TITLE, basePage.getTitle());
-        Assertions.assertEquals(TEXT_HEADPHONES_MODEL, devicePage.getProductModel());
+        Assertions.assertEquals(DEVICE_PAGE_TITLE,
+                basePage.getTitle());
+        Assertions.assertEquals(TEXT_HEADPHONES_MODEL,
+                devicePage.getProductModel());
 
         devicePage.pressButtonShoppingCart();
-        Assertions.assertEquals("Моята кошница", shoppingBagPage.getH2Text());
-        Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, basePage.getTitle());
+        Assertions.assertEquals("Моята кошница",
+                shoppingBagPage.getH2Text());
+        Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE,
+                basePage.getTitle());
 
         shoppingBagPage.checkTotalAmount();
 
