@@ -52,17 +52,17 @@ public class ProductPage extends BasePage{
 
     public void pressAppleIphone12ProMax128Gb() {
         System.out.println("Pressing link phone model Apple Iphone 12 Pro Max 128 GB");
-       clickButton(LOC_BUTTON_APPLE_IPHONE_12_PRO_MAX_128GB);
+        clickButton(LOC_BUTTON_APPLE_IPHONE_12_PRO_MAX_128GB);
 
     }
 
 
     public void pressPriceCheckBoxButton() {
         System.out.println("Pressing GOLD checkbox  button from the manufacturer menu");
-        //waitForElementVisibility(LOC_PRICE_CHECKBOX_BUTTON);
-       // if(! driver.findElement(LOC_PRICE_CHECKBOX_BUTTON).isSelected()){
+        waitForElementVisibility(LOC_PRICE_CHECKBOX_BUTTON);
+       if(! driver.findElement(LOC_PRICE_CHECKBOX_BUTTON).isSelected()){
             clickButton(LOC_PRICE_CHECKBOX_BUTTON);
-        //}
+        }
     }
 
     public void pressAppleHeadphonesWithLightningConnector() {

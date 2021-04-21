@@ -45,6 +45,7 @@ public class ShoppingBagPage extends BasePage {
     }
 
     public String getH2Text() {
+        waitForElementVisibility(LOC_TEXT_SHOPPING_BAG);
         return getText(LOC_TEXT_SHOPPING_BAG);
     }
 
@@ -84,7 +85,7 @@ public class ShoppingBagPage extends BasePage {
 
     public void pressCheckBoxGeneralConditionsForMobileServices() {
         System.out.println("Pressing General Conditions checkbox  button from shopping bag");
-        //waitForElement(LOC_CHECKBOX_BUTTON_GENERAL_CONDITION);
+        waitForElementVisibility(LOC_CHECKBOX_BUTTON_GENERAL_CONDITION);
         clickButton(LOC_CHECKBOX_BUTTON_GENERAL_CONDITION);
 
 

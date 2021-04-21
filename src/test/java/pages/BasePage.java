@@ -1,11 +1,15 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 public class BasePage {
 
@@ -40,10 +44,25 @@ public class BasePage {
         actions.perform();
     }
 
-    public void waitForElementVisibility(By by) {
-        WebDriverWait wait = new WebDriverWait(driver,15);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-        wait.until(ExpectedConditions.elementToBeClickable(by));
+
+
+
+    protected WebElement waitForElementToBeClickable(By by) {
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 25);
+        WebElement foundElementAfterWait = wait.until(ExpectedConditions.elementToBeClickable(by));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        return foundElementAfterWait;
+    }
+
+    protected WebElement waitForElementVisibility(By by) {
+        waitForFullPageOrJsAjaxToLoad();
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebElement foundElementAfterWait = wait.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        return foundElementAfterWait;
+
     }
 
     public void waitTime(){
@@ -57,8 +76,8 @@ public class BasePage {
 
 
     public void clickButton(By by) {
-        scrollToElement(by);
-        waitForElementVisibility(by);
+
+        waitForElementToBeClickable(by);
         driver.findElement(by).click();
     }
 
@@ -75,6 +94,35 @@ public class BasePage {
         waitForElementVisibility(by);
         return ! driver.findElement(by).isEnabled();
     }
+    public boolean waitForFullPageOrJsAjaxToLoad() {
+
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+
+        // wait for jQuery to load
+        ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                try {
+                    return ((Long) ((JavascriptExecutor) driver).executeScript("return jQuery.active") == 0);
+                } catch (Exception e) {
+                    // no jQuery present
+                    return true;
+                }
+            }
+        };
+
+        // wait for Javascript to load
+        ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState")
+                        .toString().equals("complete");
+            }
+        };
+
+        return wait.until(jQueryLoad) && wait.until(jsLoad);
+    }
+
 
 
 }
