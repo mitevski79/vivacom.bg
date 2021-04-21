@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -76,13 +77,19 @@ public class ShoppingBagPage {
 
 
     public void pressCheckBoxGeneralConditionsForMobileServices() {
-        System.out.println("Pressing General Conditions check box  button from shopping bag");
+       /* System.out.println("Pressing General Conditions check box  button from shopping bag");
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement checkBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icon icon-box_empty']")));
 
         if (!checkBox.isSelected()) {
             checkBox.click();
-        }
+        }*/
+        System.out.println("Pressing General Conditions check box  button from shopping bag");
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector("em[class='vivacom-icon icon-box_empty']"))));
+        WebElement button = driver.findElement(By.cssSelector("em[class='vivacom-icon icon-box_empty']"));
+        button.click();
 
 
     }
@@ -101,6 +108,8 @@ public class ShoppingBagPage {
 
 
     public void verifyThatTheShoppingBagIsEmpty() {
+       WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[text()='В момента кошницата ви е празна']")));
         WebElement textOne = driver.findElement(By.xpath("//h3[text()='В момента кошницата ви е празна']"));
         Assertions.assertEquals(textOne.getText(), "В момента кошницата ви е празна");
         WebElement textTwo = driver.findElement(By.xpath("//p[contains(text(),'Вижте актуалните ни оферти')]"));
