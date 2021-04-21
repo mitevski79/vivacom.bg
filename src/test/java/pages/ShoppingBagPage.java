@@ -3,93 +3,89 @@ package pages;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static java.lang.Integer.parseInt;
 
 
-public class ShoppingBagPage {
 
+public class ShoppingBagPage extends BasePage {
 
-    private WebDriver driver;
+    private static final By LOC_BUTTON_CONTINUE_SHOPPING = By
+            .xpath("//a[@href='/online/bg/shop/devices/listing']");
+    private static final By LOC_TEXT_SHOPPING_BAG = By
+            .xpath("//h2[text()='Моята кошница']");
+    private static final By LOC_TEXT_TOTAL_AMOUNT = By
+            .xpath("//span[@class='summarize-order-price']//span[contains(@class,'prices-28 js-limit-exceed')]");
+    private static final By LOC_FIRST_ITEM_FROM_SHOPPING_BAG = By
+            .xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']");
+    private static final By LOC_CHECKBOX_BUTTON_GENERAL_CONDITION = By
+            .cssSelector("em[class='vivacom-icon icon-box_empty']");
+    private static final By LOC_CONTINUE_AS_COSTUMER = By
+            .xpath("//button[text()='Продължи като клиент']");
+    private static final By LOC_CONTINUE_AS_GUEST = By
+            .xpath("//button[text()='Продължи като гост']");
+
+    private static final By LOC_FIRST_MESSAGE_FROM_EMPTY_SHOPPING_BAG = By
+            .xpath("//h3[text()='В момента кошницата ви е празна']");
+
+    private static final By LOC_SECOND_MESSAGE_FROM_EMPTY_SHOPPING_BAG = By
+            .xpath("//p[contains(text(),'Вижте актуалните ни оферти')]");
+
 
     public ShoppingBagPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+
+
     }
 
-    public String getTitle() {
-        return driver.getTitle().trim();
-    }
 
     public void pressButtonContinueShopping() {
         System.out.println("Pressing Continue Shopping button");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Моята кошница']")));
+        clickButton(LOC_BUTTON_CONTINUE_SHOPPING);
 
-        driver.findElement(By.xpath("//a[@href='/online/bg/shop/devices/listing']")).click();
+
     }
 
     public String getH2Text() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Моята кошница']")));
-        return driver.findElement(By.xpath("//h2[text()='Моята кошница']")).getText();
+        return getText(LOC_TEXT_SHOPPING_BAG);
     }
 
     public void checkTotalAmount() {
-        String totalAmount = driver.findElement(By.xpath("//span[@class='summarize-order-price']//span[contains(@class,'prices-28 js-limit-exceed')]")).getText();
+        String totalAmount = getText(LOC_TEXT_TOTAL_AMOUNT);
         double maxLimit = 2000;
 
         double totalPrice = Double.parseDouble(totalAmount);
         if (totalPrice > maxLimit) {
-            WebElement removeItem = driver.findElement(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']"));
-            removeItem.click();
+            removeFirstItemFromShoppingBag();
         }
     }
 
 
-    public boolean verifyCheckBoxIsDisplayed() {
-
-        return driver.findElement(By.xpath("//em[@class='vivacom-icon icon-box_empty']")).isDisplayed();
+    public void verifyCheckboxIsDisplayed() {
+        elementIsDisplayed(LOC_CHECKBOX_BUTTON_GENERAL_CONDITION);
     }
 
-    public boolean buttonContinueAsCustomerIsNotEnabled() {
-
-        return !driver.findElement(By.xpath("//button[text()='Продължи като клиент']")).isEnabled();
+    public void buttonContinueAsCustomerIsNotEnabled() {
+        elementIsNotEnabled(LOC_CONTINUE_AS_COSTUMER);
     }
 
-    public boolean buttonContinueAsGuestIsNotEnabled() {
-
-        return !driver.findElement(By.xpath("//button[text()='Продължи като гост']")).isEnabled();
+    public void buttonContinueAsGuestIsNotEnabled() {
+        elementIsNotEnabled(LOC_CONTINUE_AS_GUEST);
     }
 
-    public boolean buttonContinueAsCustomerIsEnabled() {
+    public void buttonContinueAsCustomerIsEnabled() {
+        elementIsEnabled(LOC_CONTINUE_AS_COSTUMER);
 
-        return driver.findElement(By.xpath("//button[text()='Продължи като клиент']")).isEnabled();
+
     }
 
-    public boolean buttonContinueAsGuestIsEnabled() {
-
-        return driver.findElement(By.xpath("//button[text()='Продължи като гост']")).isEnabled();
+    public void buttonContinueAsGuestIsEnabled() {
+        elementIsEnabled(LOC_CONTINUE_AS_GUEST);
     }
 
 
     public void pressCheckBoxGeneralConditionsForMobileServices() {
-       /* System.out.println("Pressing General Conditions check box  button from shopping bag");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement checkBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icon icon-box_empty']")));
-
-        if (!checkBox.isSelected()) {
-            checkBox.click();
-        }*/
         System.out.println("Pressing General Conditions check box  button from shopping bag");
-
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector("em[class='vivacom-icon icon-box_empty']"))));
-        WebElement button = driver.findElement(By.cssSelector("em[class='vivacom-icon icon-box_empty']"));
-        button.click();
+        waitForElement(LOC_CHECKBOX_BUTTON_GENERAL_CONDITION);
+        clickButton(LOC_CHECKBOX_BUTTON_GENERAL_CONDITION);
 
 
     }
@@ -97,23 +93,15 @@ public class ShoppingBagPage {
 
     public void removeFirstItemFromShoppingBag() {
         System.out.println("Pressing Close button from shopping bag ");
-
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement removeItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//em[@class='vivacom-icons icon-close_x' and @aria-hidden='true']")));
-
-        removeItem.click();
+        clickButton(LOC_FIRST_ITEM_FROM_SHOPPING_BAG);
 
 
     }
 
 
     public void verifyThatTheShoppingBagIsEmpty() {
-       WebDriverWait wait = new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[text()='В момента кошницата ви е празна']")));
-        WebElement textOne = driver.findElement(By.xpath("//h3[text()='В момента кошницата ви е празна']"));
-        Assertions.assertEquals(textOne.getText(), "В момента кошницата ви е празна");
-        WebElement textTwo = driver.findElement(By.xpath("//p[contains(text(),'Вижте актуалните ни оферти')]"));
-        Assertions.assertEquals(textTwo.getText(),
+        Assertions.assertEquals(getText(LOC_FIRST_ITEM_FROM_SHOPPING_BAG), "В момента кошницата ви е празна");
+        Assertions.assertEquals(getText(LOC_SECOND_MESSAGE_FROM_EMPTY_SHOPPING_BAG),
                 "Вижте актуалните ни оферти и изберете най-подходящата за вас. Ако искате да разгледате предходно добавени продукти, натиснете \"Вход\".");
 
     }

@@ -6,10 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.DevicePage;
-import pages.HomePage;
-import pages.ProductPage;
-import pages.ShoppingBagPage;
+import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +16,7 @@ public class BaseTest {
     protected ProductPage productPage;
     protected DevicePage devicePage;
     protected ShoppingBagPage shoppingBagPage;
+    protected BasePage basePage;
 
 
     @BeforeAll
@@ -35,16 +33,17 @@ public class BaseTest {
         driver.manage().window().maximize();
 
 
-        homePage = new HomePage(driver);
-        productPage = new ProductPage(driver);
-        devicePage =new DevicePage(driver);
-        shoppingBagPage = new ShoppingBagPage(driver);
+      //  homePage = new HomePage(driver);
+       // productPage = new ProductPage(driver);
+       // devicePage =new DevicePage(driver);
+       // shoppingBagPage = new ShoppingBagPage(driver);
+        basePage = new BasePage(driver);
 
     }
 
     @AfterEach
     public void afterEach() {
         //Kills browser instance
-        driver.quit();
+        //driver.quit();
     }
 }

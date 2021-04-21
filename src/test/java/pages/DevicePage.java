@@ -2,56 +2,42 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
-
-public class DevicePage {
 
 
+public class DevicePage extends BasePage {
 
-    private WebDriver driver;
+    private static final By LOC_TEXT_PRODUCT_MODEL = By
+            .cssSelector("a[href*='lightning-connector']");
+    private static final By LOC_RADIO_BUTTON_ONE_TIME_PAYMENT = By
+            .xpath("//span[contains(@class,'cash-price-span') and contains(text(),'1979')]");
+    private static final By LOC_GET_PRICE_OF_THE_DEVICE = By
+            .id("summaryBarDevicePriceSpanId");
+    private static final By LOC_BUTTON_SHOPPING_CARD = By
+            .cssSelector("button[class='btn btn-success js-add-to-cart-btn js-prevent-dblclick']");
+
 
     public DevicePage(WebDriver driver) {
-        this.driver = driver;
-    }
+        super(driver);
 
-
-    public String getTitle() {
-        return driver.getTitle().trim();
     }
 
     public String getProductModel() {
-        return driver.findElement(By.cssSelector("#summaryBarOfferTitleSpanId")).getText().trim();
+        return getText(LOC_TEXT_PRODUCT_MODEL);
     }
 
 
     public void pressRadioButtonForOneTimePayment() {
         System.out.println("Pressing radio button cash price from the  menu");
-        WebDriverWait wait = new WebDriverWait(driver,10);
-        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class,'cash-price-span') and contains(text(),'1979')]")));
-        button.click();
-        //driver.findElement(By.xpath("//span[contains(@class,'cash-price-span') and contains(text(),'1979')]")).click();
-
-        /*List<WebElement> radioButtons = driver.findElements(By.xpath("//span[@class='e-care-home-big-bill-price-digits js-related-offer-cash-price-span']"));
-
-        for (WebElement element : radioButtons) {
-            if (element.getText().contains("1979.98")) {
-                element.click();
-            }
-
-        }*/
+        clickButton(LOC_RADIO_BUTTON_ONE_TIME_PAYMENT);
     }
 
     public String getPriceOfTheDevice() {
-        return driver.findElement(By.id("summaryBarDevicePriceSpanId")).getText().trim();
+        return getText(LOC_GET_PRICE_OF_THE_DEVICE);
     }
 
     public void pressButtonShoppingCart() {
         System.out.println("Pressing Shopping Cart button");
-        driver.findElement(By.cssSelector("button[class='btn btn-success js-add-to-cart-btn js-prevent-dblclick']")).click();
+        clickButton(LOC_BUTTON_SHOPPING_CARD);
     }
 }
 

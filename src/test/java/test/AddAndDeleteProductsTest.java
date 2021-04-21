@@ -21,23 +21,23 @@ public class AddAndDeleteProductsTest extends BaseTest {
         homePage.pressDevicesDropdownButton();
 
         homePage.pressMobilePhonesLink();
-        Assertions.assertEquals(PRODUCT_PAGE_TITLE, productPage.getTitle());
+        Assertions.assertEquals(PRODUCT_PAGE_TITLE, basePage.getTitle());
 
         productPage.pressAppleCheckBoxButton();
         productPage.pressGoldCheckBoxButton();
 
         productPage.pressAppleIphone12ProMax128Gb();
-        Assertions.assertEquals(DEVICE_PAGE_TITLE, devicePage.getTitle());
+        Assertions.assertEquals(DEVICE_PAGE_TITLE, basePage.getTitle());
         Assertions.assertEquals(TEXT_MOBILE_PHONE_MODEL, devicePage.getProductModel());
 
         devicePage.pressRadioButtonForOneTimePayment();
         Assertions.assertEquals(DEVICE_PRISE, devicePage.getPriceOfTheDevice());
         devicePage.pressButtonShoppingCart();
         Assertions.assertEquals("Моята кошница", shoppingBagPage.getH2Text());
-        Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, shoppingBagPage.getTitle());
+        Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, basePage.getTitle());
 
         shoppingBagPage.pressButtonContinueShopping();
-        Assertions.assertEquals(PRODUCT_PAGE_TITLE, productPage.getTitle());
+        Assertions.assertEquals(PRODUCT_PAGE_TITLE, basePage.getTitle());
 
         homePage.pressDevicesDropdownButton();
         homePage.pressAccessoriesLinkButton();
@@ -45,16 +45,16 @@ public class AddAndDeleteProductsTest extends BaseTest {
         productPage.pressAppleCheckBoxButton();
         productPage.pressPriceCheckBoxButton();
         productPage.pressAppleHeadphonesWithLightningConnector();
-        Assertions.assertEquals(DEVICE_PAGE_TITLE, devicePage.getTitle());
+        Assertions.assertEquals(DEVICE_PAGE_TITLE, basePage.getTitle());
         Assertions.assertEquals(TEXT_HEADPHONES_MODEL, devicePage.getProductModel());
 
         devicePage.pressButtonShoppingCart();
         Assertions.assertEquals("Моята кошница", shoppingBagPage.getH2Text());
-        Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, shoppingBagPage.getTitle());
+        Assertions.assertEquals(SHOPPING_BAG_PAGE_TITLE, basePage.getTitle());
 
         shoppingBagPage.checkTotalAmount();
 
-        shoppingBagPage.verifyCheckBoxIsDisplayed();
+        shoppingBagPage.verifyCheckboxIsDisplayed();
 
         shoppingBagPage.buttonContinueAsCustomerIsNotEnabled();
         shoppingBagPage.buttonContinueAsGuestIsNotEnabled();
