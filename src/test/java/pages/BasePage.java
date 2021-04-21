@@ -46,7 +46,7 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(by));
     }
 
-    public void waitForElement(By by){
+    public void waitTime(){
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {

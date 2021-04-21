@@ -59,10 +59,10 @@ public class ProductPage extends BasePage{
 
     public void pressPriceCheckBoxButton() {
         System.out.println("Pressing GOLD checkbox  button from the manufacturer menu");
-        waitForElementVisibility(LOC_PRICE_CHECKBOX_BUTTON);
-        if(! driver.findElement(LOC_PRICE_CHECKBOX_BUTTON).isSelected()){
+        //waitForElementVisibility(LOC_PRICE_CHECKBOX_BUTTON);
+       // if(! driver.findElement(LOC_PRICE_CHECKBOX_BUTTON).isSelected()){
             clickButton(LOC_PRICE_CHECKBOX_BUTTON);
-        }
+        //}
     }
 
     public void pressAppleHeadphonesWithLightningConnector() {
