@@ -103,18 +103,26 @@ public class BasePage {
         // wait for jQuery to load
         ExpectedCondition<Boolean> jQueryLoad = driver -> {
             try {
-                return ((Long) ((JavascriptExecutor) driver)
+                if (driver != null) {
+                    return ((Long) ((JavascriptExecutor) driver)
                         .executeScript("return jQuery.active") == 0);
+                }
             } catch (Exception e) {
                 // no jQuery present
                 return true;
             }
+            return null;
         };
 
         // wait for Javascript to load
-        ExpectedCondition<Boolean> jsLoad = driver -> ((JavascriptExecutor) driver)
-                .executeScript("return document.readyState")
-                .toString().equals("complete");
+        ExpectedCondition<Boolean> jsLoad = driver -> {
+            if (driver != null) {
+                return ((JavascriptExecutor) driver)
+                        .executeScript("return document.readyState")
+                        .toString().equals("complete");
+            }
+            return null;
+        };
 
         return wait.until(jQueryLoad) && wait.until(jsLoad);
     }
