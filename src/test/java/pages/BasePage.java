@@ -37,15 +37,6 @@ public class BasePage {
         return driver.findElement(by).getText().trim();
     }
 
-    public void scrollToElement(By by) {
-        WebElement element = driver.findElement(by);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        actions.perform();
-    }
-
-
-
 
     protected WebElement waitForElementToBeClickable(By by) {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
@@ -67,14 +58,6 @@ public class BasePage {
 
     }
 
-    public void waitTime(){
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
     public void clickButton(By by) {
@@ -87,15 +70,17 @@ public class BasePage {
         waitForElementVisibility(by);
         return driver.findElement(by).isDisplayed();
     }
-    public boolean elementIsEnabled(By by){
+
+    public boolean elementIsEnabled(By by) {
         waitForElementVisibility(by);
         return driver.findElement(by).isEnabled();
     }
 
-    public boolean elementIsNotEnabled(By by){
+    public boolean elementIsNotEnabled(By by) {
         waitForElementVisibility(by);
-        return ! driver.findElement(by).isEnabled();
+        return !driver.findElement(by).isEnabled();
     }
+
     public boolean waitForFullPageOrJsAjaxToLoad() {
 
         WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -105,7 +90,7 @@ public class BasePage {
             try {
                 if (driver != null) {
                     return ((Long) ((JavascriptExecutor) driver)
-                        .executeScript("return jQuery.active") == 0);
+                            .executeScript("return jQuery.active") == 0);
                 }
             } catch (Exception e) {
                 // no jQuery present
@@ -126,7 +111,6 @@ public class BasePage {
 
         return wait.until(jQueryLoad) && wait.until(jsLoad);
     }
-
 
 
 }
