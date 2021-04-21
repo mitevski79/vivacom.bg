@@ -44,6 +44,6 @@ public class BaseTest {
     @AfterEach
     public void afterEach() {
         //Kills browser instance
-        //driver.quit();
+        driver.quit();
     }
 }
