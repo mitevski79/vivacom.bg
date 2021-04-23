@@ -31,7 +31,6 @@ public class BasePage {
 
 
     public String getTitle() {
-       driver.switchTo().activeElement();
         return driver.getTitle().trim();
     }
 
