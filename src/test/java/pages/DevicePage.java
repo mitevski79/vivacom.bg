@@ -28,7 +28,7 @@ public class DevicePage extends BasePage {
 
     public void pressRadioButtonForOneTimePayment() {
         System.out.println("Pressing radio button cash price from the  menu");
-        waitForElementVisibility(LOC_RADIO_BUTTON_ONE_TIME_PAYMENT);
+       // waitForElementVisibility(LOC_RADIO_BUTTON_ONE_TIME_PAYMENT);
         clickButton(LOC_RADIO_BUTTON_ONE_TIME_PAYMENT);
     }
 

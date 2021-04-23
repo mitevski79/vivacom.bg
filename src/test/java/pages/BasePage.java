@@ -22,13 +22,16 @@ public class BasePage {
 
     }
 
+
     public BasePage navigateTo() {
         System.out.println("Navigating to https://www.vivacom.bg/bg/");
         driver.navigate().to(Defaults.BASE_URL);
         return this;
     }
 
+
     public String getTitle() {
+       driver.switchTo().activeElement();
         return driver.getTitle().trim();
     }
 
